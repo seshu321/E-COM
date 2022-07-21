@@ -7,7 +7,6 @@ const initialState = {
   total: 0,
 };
 const CartContext = React.createContext({});
-
 export const CartContextProvider = ({ children }) => {
   const [{ cartItems, count, total }, dispatchFn] = useReducer(
     reducerFn,
