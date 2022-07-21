@@ -25,7 +25,7 @@ const Wrapper = styled.section`
   }
 `;
 const CartTotals = () => {
-  const {myUser}=useContext(UserContext)
+  const {myUser,loginWithRedirect}=useContext(UserContext)
   const { total,count } = useContext(CartContext);
   return (
     <Wrapper>
@@ -44,7 +44,7 @@ const CartTotals = () => {
         </div>
         
       </div>
-     {myUser?<button className="btn"><Link to="/checkout">Checkout</Link></button>: <button className="btn"><Link to="/login">Login </Link></button>}
+     {myUser?<button className="btn"><Link to="/checkout">Checkout</Link></button>: <button className="btn" onClick={loginWithRedirect}><Link to="/login" >Login </Link></button>}
     </Wrapper>
   );
 };
