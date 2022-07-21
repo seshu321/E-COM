@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import UserContext from "../context/userContext";
 
 const Wrapper = styled.div`
   display: flex;
@@ -38,6 +39,7 @@ const Wrapper = styled.div`
   
 `;
 const CartButtons = () => {
+  const {loginWithRedirect, myUser, logout }=useContext(UserContext)
   return (
     <Wrapper>
       <Link className="cart-btn" to="/cart">
@@ -46,13 +48,14 @@ const CartButtons = () => {
         <p className="cart-value">10</p>
       </Link>
 
-      {true ? (
-        <Link className="cart-btn" to="/auth">
+      {!myUser ? (
+        <Link className="cart-btn" to="/auth" onClick={loginWithRedirect}>
           <p>Login</p>
           <FaUserPlus className="cart-icon" />
         </Link>
       ) : (
-        <Link className="cart-btn" to="/auth">
+        
+        <Link className="cart-btn" to="/auth"  onClick={logout}>
           <p>Logout</p>
         </Link>
       )}

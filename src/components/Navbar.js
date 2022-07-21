@@ -73,7 +73,7 @@ const NavContainer = styled.nav`
   }
 `;
 const Navbar = () => {
-    const {openSidebar} = useContext(UserContext)
+    const {openSidebar,login} = useContext(UserContext)
   return (
     <NavContainer>
       <div className="nav-center">
