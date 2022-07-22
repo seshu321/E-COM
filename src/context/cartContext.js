@@ -65,6 +65,7 @@ export const CartContextProvider = ({ children }) => {
   };
   const addToCart = (color, qty, product) => {
     let items = [...cartItems];
+
     const newItem = {
       id: product.id,
       name: product.name,
@@ -74,7 +75,17 @@ export const CartContextProvider = ({ children }) => {
       price: product.price,
       max: product.stock,
     };
-    items.push(newItem);
+
+    if (cartItems.length > 0) {
+      items = items.map((item) => {
+        if (item.id === newItem.id) {
+          return { ...item, qty: item.qty + 1 };
+        } else return item;
+      });
+    } else {
+      items.push(newItem);
+    }
+
     let totals = getTotals(items);
     dispatchFn({
       type: "ADD_TO_CART",
@@ -90,7 +101,7 @@ export const CartContextProvider = ({ children }) => {
     decrementCartItemQty,
     count,
     total,
-    shipping_fee
+    shipping_fee,
   };
 
   return (
