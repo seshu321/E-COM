@@ -3,7 +3,7 @@ const products_reducer = (state, action) => {
   if (type === "GET_PRODUCTS_BEGIN") {
     return {
       ...state,
-      productsLoading: false,
+      productsLoading: true,
     };
   }
   if (type === "GET_PRODUCTS_SUCC") {

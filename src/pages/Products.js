@@ -4,12 +4,13 @@ import ProductsContext from "../context/productsContext";
 import styled from "styled-components";
 import ProductItem from "../components/ProductItem";
 import PageHero from "../components/PageHero";
+import Loading from "../components/Loading";
 
 const Wrapper = styled.main`
   .products-container {
     display: grid;
-    gap:2rem;
-    grid-template-columns: 1fr 1fr 1fr ;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
   }
   @media (max-width: 800px) {
     .products-container {
@@ -18,20 +19,25 @@ const Wrapper = styled.main`
   }
   @media (max-width: 570px) {
     .products-container {
-      grid-template-columns: 1fr ;
+      grid-template-columns: 1fr;
     }
   }
 `;
 const Products = () => {
-  const { products } = useContext(ProductsContext);
+  const { products, productsLoading } = useContext(ProductsContext);
   const location = useLocation();
-
+  console.log(productsLoading);
+  if (productsLoading) {
+    return <Loading />;
+  }
   return (
     <Wrapper>
-    <PageHero title="products"/>
+      <PageHero title="products" />
       <div className="products-container section section-center page-100">
-
-        {products && products.map((item,index) => <ProductItem item={item} key={index}/>)}
+        {products &&
+          products.map((item, index) => (
+            <ProductItem item={item} key={index} />
+          ))}
       </div>
     </Wrapper>
   );

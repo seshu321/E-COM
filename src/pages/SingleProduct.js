@@ -6,6 +6,7 @@ import styled from "styled-components";
 import PageHero from "../components/PageHero";
 import ProductImages from "../components/ProductImages";
 import AddToCart from "../components/AddToCart";
+import Loading from "../components/Loading";
 
 const Wrapper = styled.main`
   .back-to-products {
@@ -30,13 +31,17 @@ const Wrapper = styled.main`
   }
 `;
 const SingleProduct = () => {
-  const { fetchSingleProduct, singleProduct } = useContext(ProductsContext);
+  const { fetchSingleProduct, singleProduct , singleProductLoading,} = useContext(ProductsContext);
   const { id } = useParams();
 
   useEffect(() => {
     fetchSingleProduct(id);
   }, []);
 
+   
+    if( singleProductLoading){
+      return <Loading/>
+    }
   return (
     singleProduct && (
       <Wrapper>
