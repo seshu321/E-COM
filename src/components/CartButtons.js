@@ -43,23 +43,29 @@ const Wrapper = styled.div`
   }
 `;
 const CartButtons = () => {
-  const {  myUser, logout } = useContext(UserContext);
+  const {  myUser, logout ,closeSidebar} = useContext(UserContext);
   const {count} = useContext(CartContext)
+
+
+  const handleLogout=()=>{
+    logout()
+    closeSidebar()
+  }
   return (
     <Wrapper>
-      <Link className="cart-btn" to="/cart">
+      <Link className="cart-btn" to="/cart" onClick={closeSidebar}>
         <p>Cart</p>
         <FaShoppingCart className="cart-icon" />
         <p className="cart-value">{count}</p>
       </Link>
 
       {!myUser ? (
-        <Link className="cart-btn" to="/login" >
+        <Link className="cart-btn" to="/login" onClick={closeSidebar}>
           <p>Login</p>
           <FaUserPlus className="cart-icon" />
         </Link>
       ) : (
-        <Link className="cart-btn" to="/login"  onClick={logout}>
+        <Link className="cart-btn" to="/login"  onClick={handleLogout}>
           <p>Logout</p>
         </Link>
       )}
