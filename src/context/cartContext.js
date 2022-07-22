@@ -5,10 +5,11 @@ const initialState = {
   cartItems: [],
   count: 0,
   total: 0,
+  shipping_fee: 534,
 };
 const CartContext = React.createContext({});
 export const CartContextProvider = ({ children }) => {
-  const [{ cartItems, count, total }, dispatchFn] = useReducer(
+  const [{ cartItems, count, total, shipping_fee }, dispatchFn] = useReducer(
     reducerFn,
     initialState
   );
@@ -89,6 +90,7 @@ export const CartContextProvider = ({ children }) => {
     decrementCartItemQty,
     count,
     total,
+    shipping_fee
   };
 
   return (

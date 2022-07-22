@@ -43,7 +43,7 @@ const Wrapper = styled.div`
   }
 `;
 const CartButtons = () => {
-  const { loginWithRedirect, myUser, logout } = useContext(UserContext);
+  const {  myUser, logout } = useContext(UserContext);
   const {count} = useContext(CartContext)
   return (
     <Wrapper>
@@ -54,12 +54,12 @@ const CartButtons = () => {
       </Link>
 
       {!myUser ? (
-        <Link className="cart-btn" to="/auth" onClick={loginWithRedirect}>
+        <Link className="cart-btn" to="/login" >
           <p>Login</p>
           <FaUserPlus className="cart-icon" />
         </Link>
       ) : (
-        <Link className="cart-btn" to="/auth" onClick={logout}>
+        <Link className="cart-btn" to="/login"  onClick={logout}>
           <p>Logout</p>
         </Link>
       )}

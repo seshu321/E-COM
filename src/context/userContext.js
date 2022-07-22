@@ -1,28 +1,35 @@
-import React, { useState,useEffect } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import React, { useState, useEffect } from "react";
+
 const UserContext = React.createContext({});
 
 export const UserContextProvider = ({ children }) => {
-  const { loginWithRedirect, logout, user } = useAuth0();
+  let user = localStorage.getItem("user")
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [myUser, setMyUser] = useState(null);
+  const [myUser, setMyUser] = useState(user || null);
   const openSidebar = () => {
     setIsSidebarOpen(true);
   };
   const closeSidebar = () => {
     setIsSidebarOpen(false);
   };
+  const login = (data) => {
+    setMyUser(data);
+    localStorage.setItem("user", data);
+  };
+  const logout = () => {
+    setMyUser(null);
+    localStorage.removeItem("user");
+  };
+
   const contextValue = {
     openSidebar,
     closeSidebar,
     isSidebarOpen,
-    loginWithRedirect,
+    login,
     logout,
-    myUser
+    myUser,
   };
-  useEffect(() => {
-    setMyUser(user);
-  }, [user]);
+
   return (
     <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>
   );

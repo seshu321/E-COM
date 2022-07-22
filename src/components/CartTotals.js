@@ -25,8 +25,8 @@ const Wrapper = styled.section`
   }
 `;
 const CartTotals = () => {
-  const {myUser,loginWithRedirect}=useContext(UserContext)
-  const { total,count } = useContext(CartContext);
+  const {myUser,login}=useContext(UserContext)
+  const { total,count, shipping_fee } = useContext(CartContext);
   return (
     <Wrapper>
       <div className="subtotal-card">
@@ -36,7 +36,7 @@ const CartTotals = () => {
         </div>
         <div className="sub-total-line">
           <h4>Shippin fee :</h4>
-          <p className="total">{formatPrice(3000)}</p>
+          <p className="total">{formatPrice( shipping_fee)}</p>
         </div>
         <div className="sub-total-line section">
           <h4>Order Total :</h4>
@@ -44,7 +44,7 @@ const CartTotals = () => {
         </div>
         
       </div>
-     {myUser?<button className="btn"><Link to="/checkout">Checkout</Link></button>: <button className="btn" onClick={loginWithRedirect}><Link to="/login" >Login </Link></button>}
+     {myUser?<button className="btn"><Link to="/checkout">Checkout</Link></button>: <button className="btn" ><Link to="/login" onClick={login}>Login </Link></button>}
     </Wrapper>
   );
 };
