@@ -50,13 +50,13 @@ const CheckoutForm = () => {
   }
 
   const createPaymentIntent = async () => {
-    console.log("Sesju")
+
     try {
       const { data } = await axios.post(
         'http://localhost:4000/create',
         JSON.stringify({ cart, shipping_fee, total })
       )
-      console.log(data)
+
       setClientSecret(data.clientSecret)
     } catch (error) {
       // console.log(error.response)

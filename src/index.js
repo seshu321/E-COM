@@ -7,6 +7,7 @@ import { UserContextProvider } from "./context/userContext";
 import { ProductsContextProvider } from "./context/productsContext";
 import { CartContextProvider } from "./context/cartContext";
 import { Auth0Provider } from "@auth0/auth0-react";
+import  { FilterContextProvider } from "./context/filterContext";
 
 // dev-kzgv0h-d.us.auth0.com domain
 // ShIe0l1aQ2eKMZFvOmFPZdc1N09u30nd cliend id
@@ -21,13 +22,13 @@ root.render(
         redirectUri={window.location.origin}
         cacheLocation="localstorage"
       >
-        <CartContextProvider>
-          <ProductsContextProvider>
-            <UserContextProvider>
+        <ProductsContextProvider>
+          <FilterContextProvider>
+            <CartContextProvider>
               <App />
-            </UserContextProvider>
-          </ProductsContextProvider>
-        </CartContextProvider>
+            </CartContextProvider>
+          </FilterContextProvider>
+        </ProductsContextProvider>
       </Auth0Provider>
     </UserContextProvider>
   </React.StrictMode>

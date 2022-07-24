@@ -14,8 +14,7 @@ const stripe = require('stripe')("sk_test_51KlGCSSA2A7x6rOuyxcqXgiEfddlBb0HESp2i
 
 app.get('/',(req,res)=>res.send("hloooo"))
 app.post("/create",async(req,res)=> {
-    console.log("client")
-    console.log(req,"seshu")
+
 
  
 
