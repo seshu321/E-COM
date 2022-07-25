@@ -1,9 +1,7 @@
 const reducerFn = (state, action) => {
-    console.log("first")
   const { type, payload } = action;
-  console.log(state.filterProducts)
+
   if (type === "LOAD_PRODCUTS") {
-    console.log("1");
     let maxPrice = action.payload.map((p) => p.price);
     maxPrice = Math.max(...maxPrice);
     return {
@@ -14,15 +12,11 @@ const reducerFn = (state, action) => {
     };
   }
   if (type === "SORT_PRODUCTS") {
-    console.log("second")
-
-    console.log("2");
     let { filterProducts, sortValue } = state;
 
     let temp = [...filterProducts];
     let newProducts;
     if (sortValue === "ascending") {
-        console.log("in")
       newProducts = temp.sort((a, b) => {
         return a.price - b.price;
       });
@@ -32,7 +26,6 @@ const reducerFn = (state, action) => {
         return b.price - a.price;
       });
     }
-    console.log(newProducts)
 
     return { ...state, filterProducts: newProducts };
   }
@@ -81,7 +74,7 @@ const reducerFn = (state, action) => {
   if (type === "CLEAR_ALL") {
     return {
       ...state,
- 
+
       filters: {
         ...state.filters,
         searchText: "",

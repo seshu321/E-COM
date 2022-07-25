@@ -27,14 +27,13 @@ export const FilterContextProvider = ({ children }) => {
   useEffect(() => {
     dispatchFn({ type: "LOAD_PRODCUTS", payload: products });
   }, [products]);
-
+  useEffect(() => {
+    dispatchFn({ type: "FILTERED_PRODUCTS" });
+  }, [products, state.filters]);
 
   useEffect(() => {
-    dispatchFn({ type: "FILTERED_PRODUCTS"})
-    dispatchFn({ type: "SORT_PRODUCTS" })
-  }, [products, state.sortValue, state.filters])
-
-
+    dispatchFn({ type: "SORT_PRODUCTS" });
+  }, [products, state.sortValue,state.filters]);
 
   const updateSort = (e) => {
     dispatchFn({ type: "UPDATE_SORT", payload: e.target.value });
@@ -42,7 +41,7 @@ export const FilterContextProvider = ({ children }) => {
 
   const updateFilter = (e) => {
     let name = e.target.name;
-    console.log(e.target.name);
+  
     let value;
 
     if (name === "searchText") {
@@ -50,7 +49,7 @@ export const FilterContextProvider = ({ children }) => {
     }
     if (name === "category") {
       value = e.target.innerHTML;
-      console.log(value);
+   
     }
     if (name === "company") {
       value = e.target.value;

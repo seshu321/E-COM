@@ -33,9 +33,7 @@ export const CartContextProvider = ({ children }) => {
   };
 
   const decrementCartItemQty = (id) => {
-
     let items = [...cartItems];
-
     let newItems = items.map((item) => {
       if (item.id === id) {
         return { ...item, qty: item.qty - 1 };
@@ -43,7 +41,6 @@ export const CartContextProvider = ({ children }) => {
       return item;
     });
     let data = newItems.filter((item) => item.qty !== 0);
-;
     let totals = getTotals(data);
     dispatchFn({ type: "DECREMENT_CART_ITEM", payload: { data, ...totals } });
   };

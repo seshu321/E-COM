@@ -98,6 +98,7 @@ const Filters = () => {
   let categories = getUnique(allProducts, "category");
   let companies = getUnique(allProducts, "company");
 
+
   return (
     <Wrapper>
       <div className="left">
@@ -175,7 +176,7 @@ const Filters = () => {
           />
         </div>
         <button className="clear-products" onClick={clearFilters}>
-          Clear Products
+          Clear Filters
         </button>
       </div>
     </Wrapper>

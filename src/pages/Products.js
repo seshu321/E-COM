@@ -48,6 +48,7 @@ const Products = () => {
   const { filterProducts } = useContext(FilterContext);
   const location = useLocation();
 
+  console.log(filterProducts)
   if (productsLoading) {
     return <Loading />;
   }
