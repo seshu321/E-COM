@@ -26,6 +26,9 @@ const Wrapper = styled.section`
     margin:0;
     font-size:0.8rem;
     text-align:center;
+    a{
+      color:black;
+    }
 }
 `;
 

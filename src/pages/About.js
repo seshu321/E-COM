@@ -12,7 +12,13 @@ const Wrapper = styled.div`
     margin: 0 auto;
     padding:3rem 0;
 
-
+p{
+  line-height: 2;
+    max-width: 45em;
+    margin: 0 auto;
+    margin-top: 2rem;
+    color: var(--clr-grey-5);
+}
   .about-img {
     width: 100%;
     display: block;

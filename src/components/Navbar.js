@@ -35,7 +35,7 @@ const NavContainer = styled.nav`
     display: flex;
     justify-content: center;
     li {
-      margin: 0 0.5rem;
+      margin: 0 0.3rem;
       margin-bottom:6px;
     }
     a {

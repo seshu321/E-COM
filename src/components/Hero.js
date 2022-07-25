@@ -11,13 +11,15 @@ const Wrapper = styled.section`
   gap: 4rem;
 
   .hero-info-container {
-    h1 {
+    h2 {
       letter-spacing: 0.2rem;
-      font-size:2rem;
+   
       margin-bottom:20px;
+      line-height:1.3;
     }
     p {
       letter-spacing: 0.1rem;
+      line-height:2;
     }
   }
   .img-container {
@@ -49,20 +51,21 @@ const Wrapper = styled.section`
 
   @media (max-width: 800px) {
     grid-template-columns: 1fr;
-
+    padding:2rem 0;
     .hero-img-container {
       display: none;
     }
+
   }
 `;
 const Hero = () => {
   return (
     <Wrapper className="section-center">
       <article className="hero-info-container">
-        <h1>
+        <h2>
           design your <br />
           comfort zone
-        </h1>
+        </h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti iure
           quasi odit tenetur unde officiis repudiandae quod deserunt quia eum?
